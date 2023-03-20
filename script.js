@@ -31,15 +31,15 @@ function addBookToLibrary(author, title, pagesNum) {
 
 function showBooksTable(myLibrary) {
   OUTPUT_TABLE.innerHTML = '';
-  const ROW = document.createElement('tr');
   for (let i = 0; i < myLibrary.length; i++) {
+    const ROW = document.createElement('tr');
     for (let item in myLibrary[i]) {
       const CELL = document.createElement('td');
       CELL.textContent = item;
       ROW.appendChild(CELL);
     }
+    OUTPUT_TABLE.appendChild(ROW);
   }
-  OUTPUT_TABLE.appendChild(ROW);
 }
 
 function switchForm() {
