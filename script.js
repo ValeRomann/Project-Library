@@ -1,7 +1,6 @@
 let myLibrary = [];
 
 const OUTPUT_TABLE = document.getElementById('table-output');
-
 const INPUT_FORM = document.getElementById('input-form');
 
 const INPUT_BUTTON = document.getElementById('input-button');
@@ -13,10 +12,9 @@ INPUT_BUTTON.onclick = function (e) {
 const SUBMIT_BUTTON = document.getElementById('submit-button');
 SUBMIT_BUTTON.onclick = function (e) {
   e.preventDefault();
-  addBookToLibrary(author, title, pagesNum);
+  addBookToLibrary();
   switchForm();
 };
-
 
 function Book(author, title, pagesNum) {
   this.author = author;
@@ -24,8 +22,12 @@ function Book(author, title, pagesNum) {
   this.pagesNum = pagesNum;
 }
 
-function addBookToLibrary(author, title, pagesNum) {
-  myLibrary.push(new Book(author, title, pagesNum));
+function addBookToLibrary() {
+  let author = document.getElementById('author').value;
+  let title = document.getElementById('title').value;
+  let pagesNum = document.getElementById('pagesNum').value;
+  let newBook = new Book(author, title, pagesNum);
+  myLibrary.push(newBook);
   showBooksTable(myLibrary);
 }
 
@@ -35,7 +37,7 @@ function showBooksTable(myLibrary) {
     const ROW = document.createElement('tr');
     for (let item in myLibrary[i]) {
       const CELL = document.createElement('td');
-      CELL.textContent = item;
+      CELL.textContent = myLibrary[i][item];
       ROW.appendChild(CELL);
     }
     OUTPUT_TABLE.appendChild(ROW);
