@@ -8,7 +8,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <table class="table-ouput" id="table-output"></table>
+  <table class="table-ouput" id="table-output">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Namber of Pages</th>
+      </tr>
+    </thead>
+    <tbody>      
+    </tbody>
+  </table>
   <div class="input-form hidden" id="input-form">
     <label for="author">Author</label>
     <input type="text" name="author" id="author" required>
@@ -16,7 +26,7 @@
     <input type="text" name="title" id="title" required>
     <label for="pagesNum">Number of Pages</label>
     <input type="number" name="pagesNum" id="pagesNum" required>
-    <button type="button" id="submit-button">Submmit</button>
+    <button type="submit" id="submit-button">Submit</button>
   </div>
   <button type="button" id="input-button">NEW BOOK</button>
   <script src="script.js"></script>

@@ -1,6 +1,6 @@
 let myLibrary = [];
 
-const OUTPUT_TABLE = document.getElementById('table-output');
+const OUTPUT_TABLE = document.querySelector('#table-output tbody');
 const INPUT_FORM = document.getElementById('input-form');
 
 const INPUT_BUTTON = document.getElementById('input-button');
