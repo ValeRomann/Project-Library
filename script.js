@@ -40,6 +40,7 @@ function showBooksTable(myLibrary) {
       CELL.textContent = myLibrary[i][item];
       ROW.appendChild(CELL);
     }
+
     const DELETE_BUTTON = document.createElement('button');
     DELETE_BUTTON.setAttribute('id', 'delete-button');
     DELETE_BUTTON.innerText = 'Delete Book';
@@ -48,12 +49,25 @@ function showBooksTable(myLibrary) {
       showBooksTable(myLibrary);
     }
     ROW.appendChild(DELETE_BUTTON);
+
+    const READ_BUTTON = document.createElement('button');
+    READ_BUTTON.setAttribute('id', 'read-button');
+    READ_BUTTON.innerText = 'Read';
+    READ_BUTTON.onclick = (e) => {
+      
+      showBooksTable(myLibrary);
+    }
+    ROW.appendChild(READ_BUTTON);
     OUTPUT_TABLE.appendChild(ROW);
   }
 }
 
 function switchForm() {
-  INPUT_FORM.className === 'input-form hidden'
-  ? INPUT_FORM.className = 'input-form'
-  : INPUT_FORM.className = 'input-form hidden';
+  if (INPUT_FORM.className === 'input-form hidden'){
+    INPUT_FORM.className = 'input-form';
+    INPUT_BUTTON.innerText = 'BACK';
+  } else {
+    INPUT_FORM.className = 'input-form hidden';
+    INPUT_BUTTON.innerText = 'NEW BOOK';
+  }
 }
