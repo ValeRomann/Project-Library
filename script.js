@@ -40,6 +40,14 @@ function showBooksTable(myLibrary) {
       CELL.textContent = myLibrary[i][item];
       ROW.appendChild(CELL);
     }
+    const DELETE_BUTTON = document.createElement('button');
+    DELETE_BUTTON.setAttribute('id', 'delete-button');
+    DELETE_BUTTON.innerText = 'Delete Book';
+    DELETE_BUTTON.onclick = (e) => {
+      myLibrary.splice(i, 1);
+      showBooksTable(myLibrary);
+    }
+    ROW.appendChild(DELETE_BUTTON);
     OUTPUT_TABLE.appendChild(ROW);
   }
 }
