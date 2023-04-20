@@ -43,15 +43,6 @@ function showBooksTable(myLibrary) {
       ROW.appendChild(CELL);
     }
 
-    const DELETE_BUTTON = document.createElement('button');
-    DELETE_BUTTON.setAttribute('id', 'delete-button');
-    DELETE_BUTTON.innerText = 'Delete Book';
-    DELETE_BUTTON.onclick = (e) => {
-      myLibrary.splice(i, 1);
-      showBooksTable(myLibrary);
-    }
-    ROW.appendChild(DELETE_BUTTON);
-
     const READ_BUTTON = document.createElement('button');
     READ_BUTTON.setAttribute('id', 'read-button');
     READ_BUTTON.innerText = 'Not Read';
@@ -64,8 +55,21 @@ function showBooksTable(myLibrary) {
         e.target.innerText = 'Not Read';
       }
     }
-    ROW.appendChild(READ_BUTTON);    
+    const READ_CELL = document.createElement('td');
+    READ_CELL.appendChild(READ_BUTTON);
+    ROW.appendChild(READ_CELL);    
     OUTPUT_TABLE.appendChild(ROW);
+
+    const DELETE_BUTTON = document.createElement('button');
+    DELETE_BUTTON.setAttribute('id', 'delete-button');
+    DELETE_BUTTON.innerText = 'Delete Book';
+    DELETE_BUTTON.onclick = (e) => {
+      myLibrary.splice(i, 1);
+      showBooksTable(myLibrary);
+    }
+    const DELETE_CELL = document.createElement('td');
+    DELETE_CELL.appendChild(DELETE_BUTTON);
+    ROW.appendChild(DELETE_CELL);
   }
 }
 
