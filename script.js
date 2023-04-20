@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 const OUTPUT_TABLE = document.querySelector('#table-output tbody');
 const INPUT_FORM = document.getElementById('input-form');
@@ -20,6 +20,7 @@ function Book(author, title, pagesNum) {
   this.author = author;
   this.title = title;
   this.pagesNum = pagesNum;
+  this.isReadBook = false;
 }
 
 function addBookToLibrary() {
@@ -36,6 +37,7 @@ function showBooksTable(myLibrary) {
   for (let i = 0; i < myLibrary.length; i++) {
     const ROW = document.createElement('tr');
     for (let item in myLibrary[i]) {
+      if (item === 'isReadBook') continue;
       const CELL = document.createElement('td');
       CELL.textContent = myLibrary[i][item];
       ROW.appendChild(CELL);
@@ -52,12 +54,17 @@ function showBooksTable(myLibrary) {
 
     const READ_BUTTON = document.createElement('button');
     READ_BUTTON.setAttribute('id', 'read-button');
-    READ_BUTTON.innerText = 'Read';
+    READ_BUTTON.innerText = 'Not Read';
     READ_BUTTON.onclick = (e) => {
-      
-      showBooksTable(myLibrary);
+      if (!myLibrary[i].isReadBook) {
+        myLibrary[i].isReadBook = true;
+        e.target.innerText = 'Read';
+      } else {
+        myLibrary[i].isReadBook = false;
+        e.target.innerText = 'Not Read';
+      }
     }
-    ROW.appendChild(READ_BUTTON);
+    ROW.appendChild(READ_BUTTON);    
     OUTPUT_TABLE.appendChild(ROW);
   }
 }
