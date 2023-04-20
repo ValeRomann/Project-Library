@@ -1,7 +1,25 @@
-const myLibrary = [];
+const myLibrary = [
+  {
+    author: 'Konstantin Ivanov',
+    title: 'Narspi',
+    pagesNum: 175
+  },
+  {
+    author: 'Jack London',
+    title: 'Martin Iden',
+    pagesNum: 653
+  },
+  {
+    author: 'Fedor Dostoevskiy',
+    title: 'Idiot',
+    pagesNum: 476
+  }
+];
 
 const OUTPUT_TABLE = document.querySelector('#table-output tbody');
 const INPUT_FORM = document.getElementById('input-form');
+
+showBooksTable(myLibrary);
 
 const INPUT_BUTTON = document.getElementById('input-button');
 INPUT_BUTTON.onclick = function (e) {
@@ -57,7 +75,7 @@ function showBooksTable(myLibrary) {
     }
     const READ_CELL = document.createElement('td');
     READ_CELL.appendChild(READ_BUTTON);
-    ROW.appendChild(READ_CELL);    
+    ROW.appendChild(READ_CELL);
     OUTPUT_TABLE.appendChild(ROW);
 
     const DELETE_BUTTON = document.createElement('button');
@@ -74,7 +92,7 @@ function showBooksTable(myLibrary) {
 }
 
 function switchForm() {
-  if (INPUT_FORM.className === 'input-form hidden'){
+  if (INPUT_FORM.className === 'input-form hidden') {
     INPUT_FORM.className = 'input-form';
     INPUT_BUTTON.innerText = 'BACK';
   } else {
